@@ -10,11 +10,17 @@ var ping = function(number) {
 $(document).ready(function() {
   $("form#games").submit(function(event) {
     event.preventDefault();
-var number = parseInt($("input#number").val());
+var number = $("input#number").val();
 var result = ping(number);
 
-$(".ping").text(number);
+  if (result) {
+      $(".ball").text("ping");
+    } else {
+      $(".ball").text(number);
+    }
 
     $("#result").show();
+
+
   });
 });
