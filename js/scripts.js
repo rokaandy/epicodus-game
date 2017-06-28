@@ -1,6 +1,3 @@
-var bounce = [];
-
-
 var ping = function(number) {
   if (number % 15 === 0) {
     return 'pingpong';
@@ -11,30 +8,18 @@ var ping = function(number) {
   } else {
     return number;
   }
-};
+}
 
 
 $(document).ready(function() {
   $("form#games").submit(function(event) {
     event.preventDefault();
-    var outside = [];
+    
     var number = $("input#number").val();
-    //var result = ping(number);
-    bounce.push(number);
-    for (var i=0; i<bounce.length; i++) {
-      var nub = ping(bounce[i]);
-      outside.push(nub);
-    }
     $(".ball").text('');
-    for (var i=0; i<outside.length; i++) {
-      $(".ball").append('<p>' + outside[i]) + '</p>';
+    for (var i=1; i<=number; i++) {
+      $(".ball").append('<p>' + ping(i) + '</p>');
     }
-    // if (result) {
-    //   $(".ball").text(result);
-    // } else {
-    //   $(".ball").text(number);
-    // }
-
     $("#result").show();
   });
 });
